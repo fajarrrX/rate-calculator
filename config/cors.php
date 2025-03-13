@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['https://rate-calculator.asdordigital.com.sg', 'https://rate-calculator.asdorstaging.com', 'https://dhl-rate-calculator-test.azurewebsites.net'],
 
     'allowed_origins_patterns' => [],
 
