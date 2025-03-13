@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('scripts')
-<script src="https://cdn.tiny.cloud/1/928v2m8zo0vbh93l5myf30iqq886q98otjn22xvu9xvzpwlc/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/928v2n8zo0vbh93l5nyf30iqq886q98otin22xvu9vxzpwlcl/tinymce/6/tinymce.min.js" integrity="sha384-x1xU2sWA0hmS6vGzeZMqOcbQzTsv6oXVJgpuNvhGnle0c+dDYILNUlFIqyhYRmTw" crossorigin="anonymous"></script>
 <script>
       tinymce.init({
             selector: 'textarea',
