@@ -56,3 +56,28 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Download Bitegarden SonarCloud Report
+        run: |
+          curl -L -o bitegarden-sonarcloud-report.jar https://your-download-url/bitegarden-sonarcloud-report-1.8.1.jar
+
+      - name: Generate SonarCloud PDF Report
+        run: |
+          java -jar bitegarden-sonarcloud-report.jar \
+            -t ${{ secrets.SONAR_TOKEN }} \
+            -o asdordigital \
+            -p fajarrrX_rate-calculator \
+            -r pdf \
+            -f sonar-report-${DATE}.pdf
+
+      - name: Upload PDF Report as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: sonarcloud-report
+          path: sonar-report-*.pdf
