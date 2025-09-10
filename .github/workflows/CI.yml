@@ -63,26 +63,38 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Download Bitegarden SonarCloud Report
+      - name: Download Bitegarden SonarCloud Report from Google Drive
         run: |
-          echo "Downloading Bitegarden SonarCloud Report JAR..."
-          wget -O bitegarden-sonarcloud-report-1.8.1.jar https://github.com/bitegarden/sonarcloud-report/releases/download/v1.8.1/bitegarden-sonarcloud-report-1.8.1.jar
+          echo "🌐 Downloading Bitegarden SonarCloud Report JAR from Google Drive..."
+          
+          # Google Drive direct download URL for large files (bypasses virus scan warning)
+          FILE_ID="1nDR-9dDqr3WwDHBYvgOZQycmS5UDylYS"
+          GDRIVE_URL="https://drive.usercontent.google.com/download?id=${FILE_ID}&export=download&confirm=t"
+          
+          # Download with curl (handles redirects and large files)
+          curl -L -o bitegarden-sonarcloud-report-1.8.1.jar "$GDRIVE_URL"
           
           # Verify the download
           if [ ! -f bitegarden-sonarcloud-report-1.8.1.jar ]; then
             echo "❌ JAR file download failed"
+            echo "Please check the Google Drive URL in secrets.BITEGARDEN_JAR_URL"
             exit 1
           fi
           
-          # Check file size (should be > 1MB)
+          # Check file size (should be > 1MB for JAR files)
           SIZE=$(stat -c%s bitegarden-sonarcloud-report-1.8.1.jar)
           if [ $SIZE -lt 1000000 ]; then
-            echo "❌ JAR file seems corrupted (size: $SIZE bytes)"
-            ls -la bitegarden-sonarcloud-report-1.8.1.jar
+            echo "❌ JAR file seems too small (size: $SIZE bytes)"
+            echo "This might be an HTML error page instead of the JAR file"
+            echo "First few lines of downloaded file:"
+            head -5 bitegarden-sonarcloud-report-1.8.1.jar
             exit 1
           fi
           
           echo "✅ JAR file downloaded successfully (size: $SIZE bytes)"
+          
+          # Test if it's actually a JAR file
+          file bitegarden-sonarcloud-report-1.8.1.jar || echo "File type check not available"
 
       - name: Generate SonarCloud PDF Report
         run: |
