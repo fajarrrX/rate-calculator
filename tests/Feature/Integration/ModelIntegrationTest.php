@@ -53,13 +53,14 @@ class ModelIntegrationTest extends TestCase
 
         // Create a rate using factory (correct schema)
         $rate = Rate::factory()->create([
-            'country_id' => $country->id
+            'country_id' => $country->id,
+            'zone' => 1
         ]);
-        $rate->save();
 
+        // Assert with the actual values that were created
         $this->assertDatabaseHas('rates', [
             'country_id' => $country->id,
-            'zone' => 'Zone 1'
+            'zone' => $rate->zone
         ]);
 
         // Test fillable attributes

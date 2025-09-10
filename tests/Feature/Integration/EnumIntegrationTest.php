@@ -54,12 +54,10 @@ class EnumIntegrationTest extends TestCase
         $this->assertEquals(2, $personal->value);
         $this->assertEquals(3, $business->value);
         
-        // Test enum values
-        $standard = RateType::STANDARD;
-        $express = RateType::EXPRESS;
-        
-        $this->assertNotNull($standard);
-        $this->assertNotNull($express);
+        // Test enum comparisons
+        $this->assertTrue($original->is(RateType::Original()));
+        $this->assertFalse($original->is(RateType::Personal()));
+        $this->assertFalse($original->is(RateType::Business()));
 
         // Test enum methods if available
         if (method_exists(RateType::class, 'getValues')) {
@@ -88,10 +86,11 @@ class EnumIntegrationTest extends TestCase
             $this->fail('Enum comparison failed');
         }
 
-        // Test rate type usage
-        $rateType = RateType::STANDARD;
+        // Test rate type usage with actual enum methods
+        $rateType = RateType::Original();
         
-        $this->assertEquals(RateType::STANDARD, $rateType);
-        $this->assertNotEquals(RateType::EXPRESS, $rateType);
+        $this->assertTrue($rateType->is(RateType::Original()));
+        $this->assertFalse($rateType->is(RateType::Personal()));
+        $this->assertFalse($rateType->is(RateType::Business()));
     }
 }
