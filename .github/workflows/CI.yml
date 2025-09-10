@@ -37,10 +37,10 @@ jobs:
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
         
-      - name: Install dependencies
+      - name: Remove lock file and install dependencies
         run: |
-          composer validate
-          composer update --no-progress --prefer-dist --optimize-autoloader
+          rm -f composer.lock
+          composer install --no-progress --prefer-dist --optimize-autoloader
         
       - name: Generate application key
         run: php artisan key:generate
