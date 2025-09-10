@@ -34,7 +34,8 @@
                                 <a href="{{ route('country.show', $country->id) }}" class="btn {{$key % 2 == 0 ? 'btn-outline-light' : 'btn-outline-secondary' }}" type="button">View Details</a>
 
                                 <div class="mt-2 small">
-                                    {{$country->receivers ? $country->receivers->count() : 0}} available countries
+                                    {{$country->rates->count()}} rates available <br/>
+                                    {{$country->receivers->count()}} available countries
                                 </div>
                             </div>
                         </div>

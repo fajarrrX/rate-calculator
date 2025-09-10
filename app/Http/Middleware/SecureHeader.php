@@ -21,7 +21,10 @@ class SecureHeader
         $response->headers->set('X-Content-Type-Options', 'nosniff');
         $response->headers->set('X-XSS-Protection', '1; mode=block');
         $response->headers->set('X-Frame-Options', 'ALLOW-FROM https://www.dhl.com');
-        $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+        // Set HSTS header only for HTTPS requests, with recommended values
+        if ($request->isSecure()) {
+            $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+        }
         $response->headers->set('Content-Security-Policy', "object-src 'none'; upgrade-insecure-requests; block-all-mixed-content; style-src 'self' https://fonts.bunny.net https://cdn.jsdelivr.net https://cdn.tiny.cloud");
         return $response;
     }

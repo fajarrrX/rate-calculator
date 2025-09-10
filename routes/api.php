@@ -18,6 +18,7 @@ Route::get('/', function () {
     return response()->json(['message' => 'Rates Calculator API', 'status' => 'Connected']);;
 });
 
+Route::get('test-db', [RatesController::class, 'testDb']);
 Route::get('sender', [RatesController::class, 'sender']);
 Route::get('receiver', [RatesController::class, 'receiver']);
 Route::get('package-type', [RatesController::class, 'packageType']);

@@ -48,18 +48,8 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 
-// Handle the request
 $response = $kernel->handle(
     $request = Request::capture()
-);
-
-// Add the Content-Security-Policy header
-$response->headers->set(
-    'Content-Security-Policy',
-    "style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://cdn.jsdelivr.net https://cdn.tiny.cloud;"
-);
-
-// Send the response to the client
-$response->send();
+)->send();
 
 $kernel->terminate($request, $response);

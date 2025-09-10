@@ -19,7 +19,12 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://rate-calculator.asdordigital.com.sg', 'https://rate-calculator.asdorstaging.com', 'https://dhl-rate-calculator-test.azurewebsites.net'],
+    // Only allow requests from trusted domains
+    'allowed_origins' => [
+        '*',
+        // 'https://www.dhl.com',
+        // 'https://dhl-rate-calculator-test.azurewebsites.net',
+    ],
 
     'allowed_origins_patterns' => [],
 
