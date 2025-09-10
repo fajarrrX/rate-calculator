@@ -63,7 +63,7 @@ class EnumIntegrationTest extends TestCase
         if (method_exists(RateType::class, 'getValues')) {
             $values = RateType::getValues();
             $this->assertIsArray($values);
-            $this->assertContains($standard, $values);
+            $this->assertContains($original->value, $values);
         }
 
         if (method_exists(RateType::class, 'getKeys')) {
