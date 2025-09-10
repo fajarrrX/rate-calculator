@@ -100,6 +100,8 @@ class RateModelExecutionTest extends TestCase
         // If validation exists, this executes validation code
         try {
             $rate->save();
+            // If save succeeds, validation passed
+            $this->assertInstanceOf(Rate::class, $rate);
         } catch (\Exception $e) {
             // Validation code was executed
             $this->assertNotNull($e);

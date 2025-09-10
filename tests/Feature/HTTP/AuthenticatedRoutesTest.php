@@ -38,7 +38,7 @@ class AuthenticatedRoutesTest extends TestCase
         $this->actingAs($user);
 
         // Execute Country model methods
-        $country = Country::create([
+        $country = Country::factory()->create([
             'name' => 'Australia',
             'code' => 'AU'
         ]);
@@ -73,7 +73,7 @@ class AuthenticatedRoutesTest extends TestCase
 
         // Execute URL helpers
         $baseUrl = url('/');
-        $this->assertStringContains('http', $baseUrl);
+        $this->assertStringContainsString('http', $baseUrl);
     }
 
     /**

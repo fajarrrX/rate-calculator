@@ -13,12 +13,14 @@ class EnumIntegrationTest extends TestCase
      */
     public function test_package_type_enum_usage()
     {
-        // Test enum values
-        $document = PackageType::DOCUMENT;
-        $parcel = PackageType::PARCEL;
+        // Test enum values using BenSampo enum methods
+        $document = PackageType::Document();
+        $nonDocument = PackageType::NonDocument();
         
         $this->assertNotNull($document);
-        $this->assertNotNull($parcel);
+        $this->assertNotNull($nonDocument);
+        $this->assertEquals(1, $document->value);
+        $this->assertEquals(2, $nonDocument->value);
 
         // Test enum methods if available
         if (method_exists(PackageType::class, 'getValues')) {
@@ -43,9 +45,14 @@ class EnumIntegrationTest extends TestCase
      */
     public function test_rate_type_enum_usage()
     {
-        // Test enum constants exist
-        $this->assertTrue(defined('App\Enums\RateType::STANDARD'));
-        $this->assertTrue(defined('App\Enums\RateType::EXPRESS'));
+        // Test enum methods using BenSampo enum
+        $original = RateType::Original();
+        $personal = RateType::Personal();
+        $business = RateType::Business();
+        
+        $this->assertEquals(1, $original->value);
+        $this->assertEquals(2, $personal->value);
+        $this->assertEquals(3, $business->value);
         
         // Test enum values
         $standard = RateType::STANDARD;
@@ -72,10 +79,10 @@ class EnumIntegrationTest extends TestCase
      */
     public function test_enum_practical_usage()
     {
-        // Test that enums can be used in comparisons
-        $packageType = PackageType::DOCUMENT;
+        // Test that enums can be used in comparisons using BenSampo enum
+        $packageType = PackageType::Document();
         
-        if ($packageType === PackageType::DOCUMENT) {
+        if ($packageType->is(PackageType::Document())) {
             $this->assertTrue(true);
         } else {
             $this->fail('Enum comparison failed');

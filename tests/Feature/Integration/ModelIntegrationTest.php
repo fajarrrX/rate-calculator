@@ -17,11 +17,11 @@ class ModelIntegrationTest extends TestCase
      */
     public function test_country_model_operations()
     {
-        // Create a country
-        $country = new Country();
-        $country->name = 'Test Country';
-        $country->code = 'TC';
-        $country->save();
+        // Create a country using factory (includes required currency_code)
+        $country = Country::factory()->create([
+            'name' => 'Test Country',
+            'code' => 'TC'
+        ]);
 
         $this->assertDatabaseHas('countries', [
             'name' => 'Test Country',
@@ -45,19 +45,16 @@ class ModelIntegrationTest extends TestCase
      */
     public function test_rate_model_operations()
     {
-        // Create a country first
-        $country = new Country();
-        $country->name = 'Test Country';
-        $country->code = 'TC';
-        $country->save();
+        // Create a country first using factory
+        $country = Country::factory()->create([
+            'name' => 'Test Country',
+            'code' => 'TC'
+        ]);
 
-        // Create a rate
-        $rate = new Rate();
-        $rate->country_id = $country->id;
-        $rate->zone = 'Zone 1';
-        $rate->weight = '1kg';
-        $rate->document_price = 100.00;
-        $rate->parcel_price = 150.00;
+        // Create a rate using factory (correct schema)
+        $rate = Rate::factory()->create([
+            'country_id' => $country->id
+        ]);
         $rate->save();
 
         $this->assertDatabaseHas('rates', [
