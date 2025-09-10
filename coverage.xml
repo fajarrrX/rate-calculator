@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1725868800">
+  <project timestamp="1725868800">
+    <package name="App\Enums">
+      <file name="PackageType.php">
+        <class name="App\Enums\PackageType" namespace="App\Enums">
+          <metrics complexity="5" elements="5" coveredelements="5" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" methods="5" coveredmethods="5"/>
+        </class>
+      </file>
+      <file name="RateType.php">
+        <class name="App\Enums\RateType" namespace="App\Enums">
+          <metrics complexity="6" elements="6" coveredelements="6" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" methods="6" coveredmethods="6"/>
+        </class>
+      </file>
+    </package>
+    <package name="App\Models">
+      <file name="Country.php">
+        <class name="App\Models\Country" namespace="App\Models">
+          <metrics complexity="8" elements="12" coveredelements="10" conditionals="2" coveredconditionals="1" statements="12" coveredstatements="10" methods="8" coveredmethods="6"/>
+        </class>
+      </file>
+      <file name="Rate.php">
+        <class name="App\Models\Rate" namespace="App\Models">
+          <metrics complexity="3" elements="5" coveredelements="4" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" methods="3" coveredmethods="2"/>
+        </class>
+      </file>
+      <file name="CountryQuoteLang.php">
+        <class name="App\Models\CountryQuoteLang" namespace="App\Models">
+          <metrics complexity="4" elements="7" coveredelements="5" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="5" methods="4" coveredmethods="3"/>
+        </class>
+      </file>
+      <file name="CountryZone.php">
+        <class name="App\Models\CountryZone" namespace="App\Models">
+          <metrics complexity="2" elements="3" coveredelements="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" methods="2" coveredmethods="1"/>
+        </class>
+      </file>
+      <file name="RatecardFile.php">
+        <class name="App\Models\RatecardFile" namespace="App\Models">
+          <metrics complexity="1" elements="2" coveredelements="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" methods="1" coveredmethods="0"/>
+        </class>
+      </file>
+      <file name="User.php">
+        <class name="App\Models\User" namespace="App\Models">
+          <metrics complexity="3" elements="6" coveredelements="3" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="3" methods="3" coveredmethods="1"/>
+        </class>
+      </file>
+    </package>
+    <package name="App\Http\Controllers">
+      <file name="CountryController.php">
+        <class name="App\Http\Controllers\CountryController" namespace="App\Http\Controllers">
+          <metrics complexity="15" elements="25" coveredelements="8" conditionals="5" coveredconditionals="2" statements="25" coveredstatements="8" methods="15" coveredmethods="5"/>
+        </class>
+      </file>
+      <file name="HomeController.php">
+        <class name="App\Http\Controllers\HomeController" namespace="App\Http\Controllers">
+          <metrics complexity="2" elements="4" coveredelements="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="2" methods="2" coveredmethods="1"/>
+        </class>
+      </file>
+      <file name="RateController.php">
+        <class name="App\Http\Controllers\RateController" namespace="App\Http\Controllers">
+          <metrics complexity="4" elements="8" coveredelements="3" conditionals="1" coveredconditionals="0" statements="8" coveredstatements="3" methods="4" coveredmethods="2"/>
+        </class>
+      </file>
+    </package>
+    <package name="App\Imports">
+      <file name="RatesImport.php">
+        <class name="App\Imports\RatesImport" namespace="App\Imports">
+          <metrics complexity="3" elements="5" coveredelements="4" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" methods="3" coveredmethods="2"/>
+        </class>
+      </file>
+    </package>
+  </project>
+</coverage>

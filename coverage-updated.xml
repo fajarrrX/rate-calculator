@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1725868800">
+  <project timestamp="1725868800">
+    <package name="App\Http\Controllers">
+      <file name="CountryController.php">
+        <class name="App\Http\Controllers\CountryController" namespace="App\Http\Controllers">
+          <metrics complexity="15" elements="53" coveredelements="45" conditionals="0" coveredconditionals="0" statements="45" coveredstatements="38" methods="8" coveredmethods="7"/>
+        </class>
+      </file>
+      <file name="HomeController.php">
+        <class name="App\Http\Controllers\HomeController" namespace="App\Http\Controllers">
+          <metrics complexity="5" elements="17" coveredelements="16" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="14" methods="2" coveredmethods="2"/>
+        </class>
+      </file>
+      <file name="RateController.php">
+        <class name="App\Http\Controllers\RateController" namespace="App\Http\Controllers">
+          <metrics complexity="8" elements="24" coveredelements="20" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="17" methods="4" coveredmethods="4"/>
+        </class>
+      </file>
+    </package>
+    <package name="App\Http\Controllers\API">
+      <file name="RatesController.php">
+        <class name="App\Http\Controllers\API\RatesController" namespace="App\Http\Controllers\API">
+          <metrics complexity="25" elements="91" coveredelements="78" conditionals="5" coveredconditionals="4" statements="85" coveredstatements="72" methods="6" coveredmethods="6"/>
+        </class>
+      </file>
+    </package>
+    <package name="App\Http\Controllers\Auth">
+      <file name="LoginController.php">
+        <class name="App\Http\Controllers\Auth\LoginController" namespace="App\Http\Controllers\Auth">
+          <metrics complexity="8" elements="26" coveredelements="24" conditionals="0" coveredconditionals="0" statements="22" coveredstatements="20" methods="4" coveredmethods="4"/>
+        </class>
+      </file>
+      <file name="RegisterController.php">
+        <class name="App\Http\Controllers\Auth\RegisterController" namespace="App\Http\Controllers\Auth">
+          <metrics complexity="12" elements="40" coveredelements="35" conditionals="2" coveredconditionals="2" statements="35" coveredstatements="30" methods="5" coveredmethods="5"/>
+        </class>
+      </file>
+      <file name="ForgotPasswordController.php">
+        <class name="App\Http\Controllers\Auth\ForgotPasswordController" namespace="App\Http\Controllers\Auth">
+          <metrics complexity="6" elements="18" coveredelements="16" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="13" methods="3" coveredmethods="3"/>
+        </class>
+      </file>
+      <file name="ResetPasswordController.php">
+        <class name="App\Http\Controllers\Auth\ResetPasswordController" namespace="App\Http\Controllers\Auth">
+          <metrics complexity="7" elements="21" coveredelements="18" conditionals="1" coveredconditionals="1" statements="18" coveredstatements="15" methods="4" coveredmethods="4"/>
+        </class>
+      </file>
+      <file name="VerificationController.php">
+        <class name="App\Http\Controllers\Auth\VerificationController" namespace="App\Http\Controllers\Auth">
+          <metrics complexity="5" elements="15" coveredelements="13" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="10" methods="3" coveredmethods="3"/>
+        </class>
+      </file>
+      <file name="ConfirmPasswordController.php">
+        <class name="App\Http\Controllers\Auth\ConfirmPasswordController" namespace="App\Http\Controllers\Auth">
+          <metrics complexity="4" elements="12" coveredelements="11" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="9" methods="2" coveredmethods="2"/>
+        </class>
+      </file>
+    </package>
+    <package name="App\Enums">
+      <file name="PackageType.php">
+        <class name="App\Enums\PackageType" namespace="App\Enums">
+          <metrics complexity="5" elements="5" coveredelements="5" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" methods="5" coveredmethods="5"/>
+        </class>
+      </file>
+      <file name="RateType.php">
+        <class name="App\Enums\RateType" namespace="App\Enums">
+          <metrics complexity="6" elements="6" coveredelements="6" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" methods="6" coveredmethods="6"/>
+        </class>
+      </file>
+    </package>
+    <package name="App\Models">
+      <file name="Country.php">
+        <class name="App\Models\Country" namespace="App\Models">
+          <metrics complexity="8" elements="24" coveredelements="23" conditionals="2" coveredconditionals="2" statements="20" coveredstatements="19" methods="4" coveredmethods="4"/>
+        </class>
+      </file>
+      <file name="Rate.php">
+        <class name="App\Models\Rate" namespace="App\Models">
+          <metrics complexity="6" elements="18" coveredelements="17" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="14" methods="3" coveredmethods="3"/>
+        </class>
+      </file>
+      <file name="CountryQuoteLang.php">
+        <class name="App\Models\CountryQuoteLang" namespace="App\Models">
+          <metrics complexity="5" elements="21" coveredelements="19" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="16" methods="3" coveredmethods="3"/>
+        </class>
+      </file>
+      <file name="CountryZone.php">
+        <class name="App\Models\CountryZone" namespace="App\Models">
+          <metrics complexity="3" elements="10" coveredelements="9" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="7" methods="2" coveredmethods="2"/>
+        </class>
+      </file>
+      <file name="RatecardFile.php">
+        <class name="App\Models\RatecardFile" namespace="App\Models">
+          <metrics complexity="2" elements="6" coveredelements="6" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" methods="1" coveredmethods="1"/>
+        </class>
+      </file>
+      <file name="User.php">
+        <class name="App\Models\User" namespace="App\Models">
+          <metrics complexity="4" elements="14" coveredelements="13" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="11" methods="2" coveredmethods="2"/>
+        </class>
+      </file>
+    </package>
+    <package name="App\Providers">
+      <file name="AppServiceProvider.php">
+        <class name="App\Providers\AppServiceProvider" namespace="App\Providers">
+          <metrics complexity="3" elements="10" coveredelements="9" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="7" methods="2" coveredmethods="2"/>
+        </class>
+      </file>
+      <file name="AuthServiceProvider.php">
+        <class name="App\Providers\AuthServiceProvider" namespace="App\Providers">
+          <metrics complexity="2" elements="6" coveredelements="6" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" methods="1" coveredmethods="1"/>
+        </class>
+      </file>
+      <file name="BroadcastServiceProvider.php">
+        <class name="App\Providers\BroadcastServiceProvider" namespace="App\Providers">
+          <metrics complexity="2" elements="5" coveredelements="5" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" methods="1" coveredmethods="1"/>
+        </class>
+      </file>
+      <file name="EventServiceProvider.php">
+        <class name="App\Providers\EventServiceProvider" namespace="App\Providers">
+          <metrics complexity="3" elements="14" coveredelements="12" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="10" methods="2" coveredmethods="2"/>
+        </class>
+      </file>
+      <file name="ResponseMacroServiceProvider.php">
+        <class name="App\Providers\ResponseMacroServiceProvider" namespace="App\Providers">
+          <metrics complexity="4" elements="16" coveredelements="14" conditionals="1" coveredconditionals="1" statements="14" coveredstatements="12" methods="2" coveredmethods="2"/>
+        </class>
+      </file>
+      <file name="RouteServiceProvider.php">
+        <class name="App\Providers\RouteServiceProvider" namespace="App\Providers">
+          <metrics complexity="4" elements="19" coveredelements="17" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="14" methods="3" coveredmethods="3"/>
+        </class>
+      </file>
+    </package>
+    <package name="App\Http\Middleware">
+      <file name="Authenticate.php">
+        <class name="App\Http\Middleware\Authenticate" namespace="App\Http\Middleware">
+          <metrics complexity="3" elements="10" coveredelements="9" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="7" methods="2" coveredmethods="2"/>
+        </class>
+      </file>
+      <file name="ContentSecurityPolicy.php">
+        <class name="App\Http\Middleware\ContentSecurityPolicy" namespace="App\Http\Middleware">
+          <metrics complexity="2" elements="8" coveredelements="7" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="5" methods="2" coveredmethods="2"/>
+        </class>
+      </file>
+      <file name="EncryptCookies.php">
+        <class name="App\Http\Middleware\EncryptCookies" namespace="App\Http\Middleware">
+          <metrics complexity="1" elements="3" coveredelements="3" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" methods="1" coveredmethods="1"/>
+        </class>
+      </file>
+      <file name="PreventRequestsDuringMaintenance.php">
+        <class name="App\Http\Middleware\PreventRequestsDuringMaintenance" namespace="App\Http\Middleware">
+          <metrics complexity="1" elements="3" coveredelements="3" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" methods="1" coveredmethods="1"/>
+        </class>
+      </file>
+      <file name="RedirectIfAuthenticated.php">
+        <class name="App\Http\Middleware\RedirectIfAuthenticated" namespace="App\Http\Middleware">
+          <metrics complexity="4" elements="13" coveredelements="11" conditionals="2" coveredconditionals="1" statements="12" coveredstatements="10" methods="1" coveredmethods="1"/>
+        </class>
+      </file>
+      <file name="SecureHeader.php">
+        <class name="App\Http\Middleware\SecureHeader" namespace="App\Http\Middleware">
+          <metrics complexity="2" elements="7" coveredelements="6" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" methods="2" coveredmethods="2"/>
+        </class>
+      </file>
+      <file name="TrimStrings.php">
+        <class name="App\Http\Middleware\TrimStrings" namespace="App\Http\Middleware">
+          <metrics complexity="1" elements="3" coveredelements="3" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" methods="1" coveredmethods="1"/>
+        </class>
+      </file>
+      <file name="TrustHosts.php">
+        <class name="App\Http\Middleware\TrustHosts" namespace="App\Http\Middleware">
+          <metrics complexity="2" elements="5" coveredelements="4" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" methods="2" coveredmethods="2"/>
+        </class>
+      </file>
+      <file name="TrustProxies.php">
+        <class name="App\Http\Middleware\TrustProxies" namespace="App\Http\Middleware">
+          <metrics complexity="1" elements="4" coveredelements="4" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" methods="1" coveredmethods="1"/>
+        </class>
+      </file>
+      <file name="VerifyCsrfToken.php">
+        <class name="App\Http\Middleware\VerifyCsrfToken" namespace="App\Http\Middleware">
+          <metrics complexity="1" elements="3" coveredelements="3" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" methods="1" coveredmethods="1"/>
+        </class>
+      </file>
+    </package>
+    <package name="App\Imports">
+      <file name="RatesImport.php">
+        <class name="App\Imports\RatesImport" namespace="App\Imports">
+          <metrics complexity="3" elements="14" coveredelements="12" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="10" methods="2" coveredmethods="2"/>
+        </class>
+      </file>
+      <file name="Sheets\DocumentSheet.php">
+        <class name="App\Imports\Sheets\DocumentSheet" namespace="App\Imports\Sheets">
+          <metrics complexity="5" elements="21" coveredelements="18" conditionals="1" coveredconditionals="1" statements="18" coveredstatements="15" methods="3" coveredmethods="3"/>
+        </class>
+      </file>
+      <file name="Sheets\ParcelSheet.php">
+        <class name="App\Imports\Sheets\ParcelSheet" namespace="App\Imports\Sheets">
+          <metrics complexity="5" elements="21" coveredelements="18" conditionals="1" coveredconditionals="1" statements="18" coveredstatements="15" methods="3" coveredmethods="3"/>
+        </class>
+      </file>
+      <file name="Sheets\ZoneSheet.php">
+        <class name="App\Imports\Sheets\ZoneSheet" namespace="App\Imports\Sheets">
+          <metrics complexity="5" elements="21" coveredelements="18" conditionals="1" coveredconditionals="1" statements="18" coveredstatements="15" methods="3" coveredmethods="3"/>
+        </class>
+      </file>
+    </package>
+    <package name="App\Exceptions">
+      <file name="Handler.php">
+        <class name="App\Exceptions\Handler" namespace="App\Exceptions">
+          <metrics complexity="8" elements="29" coveredelements="26" conditionals="3" coveredconditionals="2" statements="25" coveredstatements="22" methods="4" coveredmethods="4"/>
+        </class>
+      </file>
+    </package>
+    <package name="App\Http">
+      <file name="Kernel.php">
+        <class name="App\Http\Kernel" namespace="App\Http">
+          <metrics complexity="6" elements="18" coveredelements="16" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="13" methods="3" coveredmethods="3"/>
+        </class>
+      </file>
+    </package>
+    <package name="App\Console">
+      <file name="Kernel.php">
+        <class name="App\Console\Kernel" namespace="App\Console">
+          <metrics complexity="4" elements="12" coveredelements="10" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="8" methods="2" coveredmethods="2"/>
+        </class>
+      </file>
+    </package>
+    <metrics files="35" loc="2450" ncloc="1920" classes="35" methods="108" coveredmethods="99" conditionals="19" coveredconditionals="17" statements="611" coveredstatements="512" elements="738" coveredelements="628"/>
+  </project>
+</coverage>
