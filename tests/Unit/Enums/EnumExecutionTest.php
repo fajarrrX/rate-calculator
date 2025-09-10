@@ -36,7 +36,7 @@ class EnumExecutionTest extends TestCase
 
         // Execute toArray if exists
         if (method_exists(PackageType::class, 'toArray')) {
-            $array = PackageType::toArray();
+            $array = (new PackageType(PackageType::Document))->toArray();
             $this->assertIsArray($array);
         }
 

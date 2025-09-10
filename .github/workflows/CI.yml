@@ -57,7 +57,9 @@ jobs:
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
-        run: php artisan test --coverage-clover=coverage.xml
+          XDEBUG_MODE: coverage
+        run: |
+          php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-clover=coverage.xml --coverage-text --colors=never
         
       - name: Upload coverage to SonarCloud
         uses: SonarSource/sonarcloud-github-action@master

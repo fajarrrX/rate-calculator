@@ -29,16 +29,16 @@ class RateModelExecutionTest extends TestCase
         $rate = Rate::create([
             'country_id' => $country->id,
             'package_type' => $packageType->value,
-            'rate_type' => $rateType->value,
-            'weight_from' => 1.0,
-            'weight_to' => 5.0,
-            'cost' => 100.50
+            'type' => $rateType->value,
+            'weight' => 1.5,
+            'zone' => 1,
+            'price' => 100.50
         ]);
 
         // Execute model methods
         $this->assertInstanceOf(Rate::class, $rate);
         $this->assertEquals($packageType->value, $rate->package_type);
-        $this->assertEquals($rateType->value, $rate->rate_type);
+        $this->assertEquals($rateType->value, $rate->type);
     }
 
     /**
@@ -51,7 +51,7 @@ class RateModelExecutionTest extends TestCase
         $rate = Rate::factory()->create([
             'country_id' => $country->id,
             'package_type' => PackageType::NonDocument()->value,
-            'rate_type' => RateType::Personal()->value
+            'type' => RateType::Personal()->value
         ]);
 
         // Execute relationship method - actual code execution
@@ -69,12 +69,12 @@ class RateModelExecutionTest extends TestCase
     {
         $rate = Rate::factory()->create([
             'package_type' => PackageType::Document()->value,
-            'rate_type' => RateType::Business()->value
+            'type' => RateType::Business()->value
         ]);
 
         // Execute casting/accessor methods if they exist
         $packageTypeValue = $rate->package_type;
-        $rateTypeValue = $rate->rate_type;
+        $rateTypeValue = $rate->type;
 
         // Verify enum values through actual execution
         $this->assertEquals(PackageType::Document()->value, $packageTypeValue);
@@ -92,10 +92,10 @@ class RateModelExecutionTest extends TestCase
         $rate = new Rate();
         $rate->country_id = $country->id;
         $rate->package_type = PackageType::NonDocument()->value;
-        $rate->rate_type = RateType::Original()->value;
-        $rate->weight_from = 5.0;
-        $rate->weight_to = 1.0; // Invalid: to < from
-        $rate->cost = 200.00;
+        $rate->type = RateType::Original()->value;
+        $rate->weight = 5.0;
+        $rate->zone = 1;
+        $rate->price = 200.00;
 
         // If validation exists, this executes validation code
         try {
@@ -114,11 +114,11 @@ class RateModelExecutionTest extends TestCase
         // Create rates with different enum values
         Rate::factory()->create(['package_type' => PackageType::Document()->value]);
         Rate::factory()->create(['package_type' => PackageType::NonDocument()->value]);
-        Rate::factory()->create(['rate_type' => RateType::Personal()->value]);
+        Rate::factory()->create(['type' => RateType::Personal()->value]);
 
         // Execute query methods - this executes model query code
         $documentRates = Rate::where('package_type', PackageType::Document()->value)->get();
-        $personalRates = Rate::where('rate_type', RateType::Personal()->value)->get();
+        $personalRates = Rate::where('type', RateType::Personal()->value)->get();
 
         // These queries execute model and enum code paths
         $this->assertGreaterThanOrEqual(1, $documentRates->count());

@@ -24,19 +24,19 @@ class RateCalculationTest extends TestCase
         $documentRate = Rate::factory()->create([
             'country_id' => $country->id,
             'package_type' => PackageType::Document()->value,
-            'rate_type' => RateType::Original()->value,
-            'weight_from' => 0.0,
-            'weight_to' => 2.0,
-            'cost' => 50.00
+            'type' => RateType::Original()->value,
+            'weight' => 1.0,
+            'zone' => 1,
+            'price' => 50.00
         ]);
 
         $nonDocumentRate = Rate::factory()->create([
             'country_id' => $country->id,
             'package_type' => PackageType::NonDocument()->value,
-            'rate_type' => RateType::Personal()->value,
-            'weight_from' => 0.0,
-            'weight_to' => 5.0,
-            'cost' => 150.00
+            'type' => RateType::Personal()->value,
+            'weight' => 3.0,
+            'zone' => 1,
+            'price' => 150.00
         ]);
 
         // Execute rate lookup logic
@@ -52,8 +52,8 @@ class RateCalculationTest extends TestCase
         // This simulates rate calculation service logic
         $rate = Rate::where('country_id', $countryId)
             ->where('package_type', $packageType)
-            ->where('weight_from', '<=', $weight)
-            ->where('weight_to', '>=', $weight)
+            ->where('weight', '>=', $weight - 1)
+            ->where('weight', '<=', $weight + 1)
             ->first();
 
         if ($rate) {
@@ -70,13 +70,13 @@ class RateCalculationTest extends TestCase
     private function calculateCost(Rate $rate, $weight)
     {
         // Execute business logic for cost calculation
-        $baseCost = $rate->cost;
+        $baseCost = $rate->price;
         
         // Apply package type multiplier
         $multiplier = $this->getPackageTypeMultiplier($rate->package_type);
         
         // Apply rate type adjustments
-        $adjustment = $this->getRateTypeAdjustment($rate->rate_type);
+        $adjustment = $this->getRateTypeAdjustment($rate->type);
         
         return ($baseCost * $multiplier) + $adjustment;
     }
@@ -121,35 +121,33 @@ class RateCalculationTest extends TestCase
     {
         $country = Country::factory()->create();
         
-        // Create overlapping weight ranges
-        Rate::factory()->create([
+        // Create different weight rates
+        $lightRate = Rate::factory()->create([
             'country_id' => $country->id,
             'package_type' => PackageType::Document()->value,
-            'weight_from' => 0.0,
-            'weight_to' => 2.0,
-            'cost' => 30.00
+            'weight' => 1.5,
+            'zone' => 1,
+            'price' => 30.00
         ]);
 
-        Rate::factory()->create([
+        $heavyRate = Rate::factory()->create([
             'country_id' => $country->id,
             'package_type' => PackageType::Document()->value,
-            'weight_from' => 2.0,
-            'weight_to' => 10.0,
-            'cost' => 80.00
+            'weight' => 5.0,
+            'zone' => 1,
+            'price' => 80.00
         ]);
 
         // Execute weight-based selection logic
-        $lightRate = Rate::where('country_id', $country->id)
-            ->where('weight_from', '<=', 1.5)
-            ->where('weight_to', '>=', 1.5)
+        $foundLightRate = Rate::where('country_id', $country->id)
+            ->where('weight', '<=', 2.0)
             ->first();
 
-        $heavyRate = Rate::where('country_id', $country->id)
-            ->where('weight_from', '<=', 5.0)
-            ->where('weight_to', '>=', 5.0)
+        $foundHeavyRate = Rate::where('country_id', $country->id)
+            ->where('weight', '>=', 4.0)
             ->first();
 
-        $this->assertEquals(30.00, $lightRate->cost);
-        $this->assertEquals(80.00, $heavyRate->cost);
+        $this->assertEquals(30.00, $foundLightRate->price);
+        $this->assertEquals(80.00, $foundHeavyRate->price);
     }
 }
