@@ -1,4 +1,4 @@
-name: CI
+name: SonarCloud
 
 on:
   push:
@@ -52,32 +52,33 @@ jobs:
           php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-clover=coverage.xml --coverage-text --colors=never
         
       - name: Upload coverage to SonarCloud
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarcloud-github-action@v2.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
       - name: Download Bitegarden SonarCloud Report
         run: |
-          curl -L -o bitegarden-sonarcloud-report.jar https://your-download-url/bitegarden-sonarcloud-report-1.8.1.jar
+          curl -L -o bitegarden-sonarcloud-report.jar https://github.com/bitegarden/sonarcloud-report/releases/download/v1.8.1/bitegarden-sonarcloud-report-1.8.1.jar
 
       - name: Generate SonarCloud PDF Report
         run: |
           java -jar bitegarden-sonarcloud-report.jar \
-            -t ${{ secrets.SONAR_TOKEN }} \
-            -o asdordigital \
-            -p fajarrrX_rate-calculator \
-            -r pdf \
-            -f sonar-report-${DATE}.pdf
+            --sonarcloud-token=${{ secrets.SONAR_TOKEN }} \
+            --sonarcloud-organization=asdordigital \
+            --sonarcloud-project-key=fajarrrX_rate-calculator \
+            --report-type=pdf \
+            --output-file=sonar-report-${DATE}.pdf
 
-      - name: Upload PDF Report as Artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload PDF Report as Artifact  
+        uses: actions/upload-artifact@v4
         with:
           name: sonarcloud-report
           path: sonar-report-*.pdf
+          retention-days: 30
