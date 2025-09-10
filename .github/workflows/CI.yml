@@ -65,16 +65,51 @@ jobs:
 
       - name: Download Bitegarden SonarCloud Report
         run: |
-          curl -L -o bitegarden-sonarcloud-report.jar https://github.com/bitegarden/sonarcloud-report/releases/download/v1.8.1/bitegarden-sonarcloud-report-1.8.1.jar
+          echo "Downloading Bitegarden SonarCloud Report JAR..."
+          wget -O bitegarden-sonarcloud-report-1.8.1.jar https://github.com/bitegarden/sonarcloud-report/releases/download/v1.8.1/bitegarden-sonarcloud-report-1.8.1.jar
+          
+          # Verify the download
+          if [ ! -f bitegarden-sonarcloud-report-1.8.1.jar ]; then
+            echo "❌ JAR file download failed"
+            exit 1
+          fi
+          
+          # Check file size (should be > 1MB)
+          SIZE=$(stat -c%s bitegarden-sonarcloud-report-1.8.1.jar)
+          if [ $SIZE -lt 1000000 ]; then
+            echo "❌ JAR file seems corrupted (size: $SIZE bytes)"
+            ls -la bitegarden-sonarcloud-report-1.8.1.jar
+            exit 1
+          fi
+          
+          echo "✅ JAR file downloaded successfully (size: $SIZE bytes)"
 
       - name: Generate SonarCloud PDF Report
         run: |
-          java -jar bitegarden-sonarcloud-report.jar \
+          # Set current date for filename
+          CURRENT_DATE=$(date +%Y-%m-%d)
+          OUTPUT_FILE="sonar-report-${CURRENT_DATE}.pdf"
+          
+          echo "🚀 Generating SonarCloud PDF Report..."
+          echo "📊 Organization: asdordigital"
+          echo "📁 Project: fajarrrX_rate-calculator"
+          echo "📄 Output: $OUTPUT_FILE"
+          
+          java -jar bitegarden-sonarcloud-report-1.8.1.jar \
             --sonarcloud-token=${{ secrets.SONAR_TOKEN }} \
             --sonarcloud-organization=asdordigital \
             --sonarcloud-project-key=fajarrrX_rate-calculator \
             --report-type=pdf \
-            --output-file=sonar-report-${DATE}.pdf
+            --output-file="$OUTPUT_FILE"
+          
+          # Verify report was generated
+          if [ -f "$OUTPUT_FILE" ]; then
+            echo "✅ Report generated successfully: $OUTPUT_FILE"
+            ls -la "$OUTPUT_FILE"
+          else
+            echo "❌ Report generation failed"
+            exit 1
+          fi
 
       - name: Upload PDF Report as Artifact  
         uses: actions/upload-artifact@v4
@@ -82,3 +117,4 @@ jobs:
           name: sonarcloud-report
           path: sonar-report-*.pdf
           retention-days: 30
+        if: always()
