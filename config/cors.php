@@ -21,9 +21,8 @@ return [
 
     // Only allow requests from trusted domains
     'allowed_origins' => [
-        '*',
-        // 'https://www.dhl.com',
-        // 'https://dhl-rate-calculator-test.azurewebsites.net',
+        'https://www.dhl.com',
+        'https://dhl-rate-calculator-test.azurewebsites.net',
     ],
 
     'allowed_origins_patterns' => [],
