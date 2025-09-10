@@ -18,7 +18,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.2'
           extensions: bcmath, ctype, fileinfo, json, mbstring, openssl, pdo, tokenizer, xml
           coverage: xdebug
           
@@ -26,7 +26,9 @@ jobs:
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
         
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist --optimize-autoloader
+        run: |
+          composer validate
+          composer update --no-progress --prefer-dist --optimize-autoloader
         
       - name: Generate application key
         run: php artisan key:generate
