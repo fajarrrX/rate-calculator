@@ -16,6 +16,10 @@ class BroadcastServiceProvider extends ServiceProvider
     {
         Broadcast::routes();
 
-        require base_path('routes/channels.php');
+        // Load broadcast channel routes
+        $channelsPath = base_path('routes/channels.php');
+        if (file_exists($channelsPath)) {
+            require_once $channelsPath;
+        }
     }
 }
