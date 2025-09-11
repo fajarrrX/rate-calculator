@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
-
 /*
 |--------------------------------------------------------------------------
 | Console Routes
@@ -12,8 +9,10 @@ use Illuminate\Support\Facades\Artisan;
 | commands. Each Closure is bound to a command instance allowing a
 | simple approach to interacting with each command's IO methods.
 |
+| Note: Console commands have been moved to class-based commands in
+| app/Console/Commands/ and are registered in app/Console/Kernel.php
+|
 */
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+// Console commands are now registered as classes in Kernel.php
+// Example: InspireCommand::class is registered in the commands() method
