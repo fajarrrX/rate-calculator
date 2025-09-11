@@ -16,10 +16,7 @@ class BroadcastServiceProvider extends ServiceProvider
     {
         Broadcast::routes();
 
-        // Load broadcast channel routes
-        $channelsPath = base_path('routes/channels.php');
-        if (file_exists($channelsPath)) {
-            require_once $channelsPath;
-        }
+        // Load broadcast channel routes using Laravel's proper method
+        $this->loadRoutesFrom(base_path('routes/channels.php'));
     }
 }
