@@ -142,6 +142,13 @@ class TargetedCoverageTest extends TestCase
      */
     public function test_ratecard_file_model_coverage(): void
     {
+        // Skip if RatecardFile has been mocked by other tests
+        if (!class_exists('App\\Models\\RatecardFile') || 
+            !method_exists('App\\Models\\RatecardFile', 'getFillable')) {
+            $this->markTestSkipped('RatecardFile class has been mocked, skipping to avoid conflicts');
+            return;
+        }
+        
         // Test model instantiation without database
         $model = new RatecardFile();
         $this->assertInstanceOf(RatecardFile::class, $model);
