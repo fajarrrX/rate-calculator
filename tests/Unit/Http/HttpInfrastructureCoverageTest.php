@@ -201,7 +201,7 @@ class HttpInfrastructureCoverageTest extends TestCase
         // Should extend Laravel's base handler
         $parentClass = $reflection->getParentClass();
         $this->assertNotFalse($parentClass);
-        $this->assertStringContainsString('ExceptionHandler', $parentClass->getName());
+        $this->assertEquals('Illuminate\Foundation\Exceptions\Handler', $parentClass->getName());
     }
 
     /**
@@ -215,7 +215,7 @@ class HttpInfrastructureCoverageTest extends TestCase
         // Should extend Laravel's HTTP Kernel
         $parentClass = $reflection->getParentClass();
         $this->assertNotFalse($parentClass);
-        $this->assertStringContainsString('HttpKernel', $parentClass->getName());
+        $this->assertEquals('Illuminate\Foundation\Http\Kernel', $parentClass->getName());
     }
 
     /**
