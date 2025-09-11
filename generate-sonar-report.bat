@@ -50,11 +50,11 @@ echo 📄 Output: %OUTPUT_FILE%
 echo.
 
 :: Generate the report
-java --sonarcloud-token=%SONAR_TOKEN% ^
-    --sonarcloud-organization=%ORGANIZATION% ^
-    --sonarcloud-project-key=%PROJECT_KEY% ^
-    --report-type=pdf ^
-    --output-file=%OUTPUT_FILE% ^
+java -Dsonar.token=%SONAR_TOKEN% ^
+    -Dsonar.organizationKey=%ORGANIZATION% ^
+    -Dsonar.projectKey=%PROJECT_KEY% ^
+    -Dreport.type=0 ^
+    -Doutput=%OUTPUT_FILE% ^
     -jar "%JAR_FILE%"
 
 if exist "%OUTPUT_FILE%" (

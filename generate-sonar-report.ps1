@@ -58,11 +58,11 @@ Write-Host "📄 Output: $OUTPUT_FILE" -ForegroundColor Cyan
 
 # Generate the report
 try {
-    java --sonarcloud-token=$SONAR_TOKEN `
-        --sonarcloud-organization=$ORGANIZATION `
-        --sonarcloud-project-key=$PROJECT_KEY `
-        --report-type=pdf `
-        --output-file=$OUTPUT_FILE `
+    java -Dsonar.token=$SONAR_TOKEN `
+        -Dsonar.organizationKey=$ORGANIZATION `
+        -Dsonar.projectKey=$PROJECT_KEY `
+        -Dreport.type=0 `
+        -Doutput=$OUTPUT_FILE `
         -jar $JAR_FILE
 
     if (Test-Path $OUTPUT_FILE) {

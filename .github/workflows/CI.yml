@@ -107,11 +107,11 @@ jobs:
           echo "📁 Project: fajarrrX_rate-calculator"
           echo "📄 Output: $OUTPUT_FILE"
           
-          java --sonarcloud-token=${{ secrets.SONAR_TOKEN }} \
-            --sonarcloud-organization=asdordigital \
-            --sonarcloud-project-key=fajarrrX_rate-calculator \
-            --report-type=pdf \
-            --output-file="$OUTPUT_FILE" \
+          java -Dsonar.token=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.organizationKey=asdordigital \
+            -Dsonar.projectKey=fajarrrX_rate-calculator \
+            -Dreport.type=0 \
+            -Doutput="$OUTPUT_FILE" \
             -jar bitegarden-sonarcloud-report-1.8.1.jar
           
           # Verify report was generated
