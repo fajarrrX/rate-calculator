@@ -203,7 +203,8 @@ class TargetedCoverageTest extends TestCase
         // We can't actually call boot() as it requires routes file, but we can verify structure
         $source = file_get_contents($reflection->getFileName());
         $this->assertStringContainsString('Broadcast::routes()', $source);
-        $this->assertStringContainsString('require_once', $source);
+        $this->assertStringContainsString('loadRoutesFrom', $source);
+        $this->assertStringNotContainsString('require_once', $source);
     }
 
     /**
