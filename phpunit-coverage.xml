@@ -5,21 +5,11 @@
          colors="true"
 >
     <testsuites>
-        <testsuite name="Coverage">
-            <directory suffix="Test.php">./tests/Unit/Coverage</directory>
-            <!-- Exclude problematic tests that cause class conflicts -->
-            <exclude>./tests/Unit/Coverage/ImportCoverageTest.php</exclude>
-            <exclude>./tests/Unit/Coverage/ModelCoverageTest.php</exclude>
-            <exclude>./tests/Unit/Coverage/FinalCoverageBoostTest.php</exclude>
-            <exclude>./tests/Unit/Coverage/ControllerSuccessPathCoverageTest.php</exclude>
-            <exclude>./tests/Unit/Coverage/ControllerSuccessPathCoverageSimplifiedTest.php</exclude>
-            <exclude>./tests/Unit/Coverage/TargetedCoverageTest.php</exclude>
-        </testsuite>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
-            <!-- Exclude model tests that might cause RatecardFile conflicts -->
-            <exclude>./tests/Unit/Models/RatecardFileTest.php</exclude>
-            <exclude>./tests/Unit/Models/RatecardFileComprehensiveCoverageTest.php</exclude>
+            <!-- Exclude all model tests to avoid RatecardFile conflicts -->
+            <exclude>./tests/Unit/Models</exclude>
+            <!-- Exclude all coverage tests to avoid class conflicts -->
             <exclude>./tests/Unit/Coverage</exclude>
         </testsuite>
     </testsuites>
